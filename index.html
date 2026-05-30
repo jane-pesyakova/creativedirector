@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jane Pesyakova — AI Lead Creative</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #111110;
+    --white: #FAFAF8;
+    --gray-light: #F1EFE8;
+    --gray-mid: #B4B2A9;
+    --gray-dark: #444441;
+    --accent: #111110;
+    --border: rgba(0,0,0,0.1);
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--white);
+    color: var(--black);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    background: var(--white);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-name { font-size: 14px; font-weight: 500; letter-spacing: 0.02em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { font-size: 13px; color: var(--gray-dark); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--black); }
+
+  /* SECTIONS */
+  section { padding: 120px 48px; max-width: 1100px; margin: 0 auto; }
+  section:first-of-type { padding-top: 160px; }
+
+  /* HERO */
+  .hero { padding-top: 180px; padding-bottom: 120px; }
+  .hero-label {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: clamp(48px, 7vw, 88px);
+    font-weight: 500;
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    margin-bottom: 40px;
+  }
+  .hero-bio {
+    max-width: 640px;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--gray-dark);
+    margin-bottom: 48px;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 40px;
+    font-size: 13px;
+    color: var(--gray-mid);
+    flex-wrap: wrap;
+  }
+  .hero-meta span { display: flex; align-items: center; gap: 8px; }
+  .hero-meta strong { color: var(--black); }
+
+  /* DIVIDER */
+  .divider {
+    width: 100%;
+    height: 0.5px;
+    background: var(--border);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* TOOLS */
+  .tools-section { padding: 80px 48px; }
+  .section-label {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    margin-bottom: 32px;
+  }
+  .tools-intro {
+    max-width: 600px;
+    font-size: 16px;
+    color: var(--gray-dark);
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 0.5px solid var(--border);
+  }
+  .tool-item {
+    background: var(--white);
+    padding: 24px 28px;
+  }
+  .tool-name {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .tool-use {
+    font-size: 12px;
+    color: var(--gray-mid);
+    line-height: 1.5;
+  }
+
+  /* CASES */
+  .cases-section { padding: 80px 48px; }
+  .case {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    padding: 60px 0;
+    border-top: 0.5px solid var(--border);
+  }
+  .case:last-child { border-bottom: 0.5px solid var(--border); }
+  .case-meta {}
+  .case-number {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    margin-bottom: 16px;
+  }
+  .case-title {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .case-subtitle {
+    font-size: 14px;
+    color: var(--gray-mid);
+    margin-bottom: 32px;
+  }
+  .case-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .stat {}
+  .stat-value {
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--gray-mid);
+    margin-top: 4px;
+  }
+  .case-body { display: flex; flex-direction: column; gap: 24px; }
+  .case-block {}
+  .case-block-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--black);
+    margin-bottom: 8px;
+  }
+  .case-block p {
+    font-size: 15px;
+    color: var(--gray-dark);
+    line-height: 1.7;
+  }
+  .result-block {
+    background: var(--gray-light);
+    padding: 20px 24px;
+  }
+  .result-block .case-block-label { color: var(--black); }
+  .result-block p { color: var(--black); }
+
+  /* CONTACT */
+  .contact-section {
+    padding: 100px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+    border-top: 0.5px solid var(--border);
+  }
+  .contact-left {}
+  .contact-label {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    margin-bottom: 16px;
+  }
+  .contact-heading {
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 40px;
+  }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    color: var(--gray-dark);
+    transition: color 0.2s;
+  }
+  .contact-link:hover { color: var(--black); }
+  .contact-link-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    min-width: 72px;
+  }
+  .permit-badge {
+    font-size: 12px;
+    border: 0.5px solid var(--border);
+    padding: 8px 16px;
+    color: var(--gray-dark);
+    align-self: flex-start;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 24px 48px;
+    font-size: 12px;
+    color: var(--gray-mid);
+    border-top: 0.5px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section, .tools-section, .cases-section { padding: 80px 24px; }
+    .hero { padding-top: 120px; }
+    .case { grid-template-columns: 1fr; gap: 32px; }
+    .contact-section { padding: 80px 24px; flex-direction: column; align-items: flex-start; }
+    footer { padding: 24px; flex-direction: column; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-name">Jane Pesyakova</div>
+  <div class="nav-links">
+    <a href="#work">Work</a>
+    <a href="#tools">Tools</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-label">AI Lead Creative</div>
+  <h1>Jane<br>Pesyakova</h1>
+  <p class="hero-bio">Most teams are still experimenting with AI. I build the systems, people, and culture that make it an operational standard.<br><br>10+ years of creative leadership across brand identity, integrated campaigns, and product launches — app, paid, digital, social, and OOH. I've led teams of 10–15, grown mid-level creatives into leads, and built AI-native departments from the ground up.<br><br>I develop creative vision rooted in brand values and business objectives — then architect the end-to-end systems that deliver it at scale. But the infrastructure only works when the people do. So I build that too: mentorship models, knowledge-sharing practices, and team cultures where experimentation is safe and craft still matters.</p>
+  <div class="hero-meta">
+    <span><strong>Creative Director</strong> · Drinkit App · 350,000 MAU</span>
+    <span><strong>2022 — Present</strong></span>
+    <span><strong>Remote / München</strong></span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TOOLS -->
+<section class="tools-section" id="tools">
+  <div class="section-label">Tools & Practice</div>
+  <p class="tools-intro">As a creative lead, I work primarily with AI tools — for concept generation, brainstorming, and presentation development. My hands-on practice is built around AI as a creative partner.</p>
+  <div class="tools-grid">
+    <div class="tool-item">
+      <div class="tool-name">Midjourney</div>
+      <div class="tool-use">Concept generation and pre-shoot visual development</div>
+    </div>
+    <div class="tool-item">
+      <div class="tool-name">Nanobanna</div>
+      <div class="tool-use">High-volume image generation for campaign and product content</div>
+    </div>
+    <div class="tool-item">
+      <div class="tool-name">Claude / ChatGPT</div>
+      <div class="tool-use">Creative direction, prompt framework development, and process design</div>
+    </div>
+    <div class="tool-item">
+      <div class="tool-name">Figma + AI plugins</div>
+      <div class="tool-use">Visual systems design and concept presentations</div>
+    </div>
+    <div class="tool-item">
+      <div class="tool-name">Freepik AI · Magnific</div>
+      <div class="tool-use">Image generation and upscaling for production-ready assets</div>
+    </div>
+    <div class="tool-item">
+      <div class="tool-name">Kling</div>
+      <div class="tool-use">Video concept development in collaboration with video team</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CASES -->
+<section class="cases-section" id="work">
+  <div class="section-label">Experience & Case Studies</div>
+
+  <!-- Case 01 -->
+  <div class="case">
+    <div class="case-meta">
+      <div class="case-number">01</div>
+      <div class="case-title">AI Content Factory</div>
+      <div class="case-subtitle">for high-volume product testing</div>
+      <div class="case-stats">
+        <div class="stat">
+          <div class="stat-value">7→2</div>
+          <div class="stat-label">Days time-to-market</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">100+</div>
+          <div class="stat-label">Monthly capacity</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">3</div>
+          <div class="stat-label">Team members</div>
+        </div>
+      </div>
+    </div>
+    <div class="case-body">
+      <div class="case-block">
+        <div class="case-block-label">Business problem</div>
+        <p>The business needed to launch 100+ product tests per month. Traditional production couldn't sustain that output in time or cost. Every day of delay meant a lost test cycle.</p>
+      </div>
+      <div class="case-block">
+        <div class="case-block-label">My role</div>
+        <p>Built an end-to-end content factory from the ground up — restructuring team roles entirely around AI-assisted workflows. Developed generation style guides and prompt systems using Nanobanna, Freepik AI, and Magnific. Coached the team through the transition, establishing knowledge-sharing practices that made the system fully self-sufficient. A repeatable visual framework maintained brand consistency across high-volume output — same headcount, one freelancer added.</p>
+      </div>
+      <div class="result-block case-block">
+        <div class="case-block-label">Result</div>
+        <p>Traditional production was removed from the pipeline entirely. Time-to-market dropped from 7 days to 2.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Case 02 -->
+  <div class="case">
+    <div class="case-meta">
+      <div class="case-number">02</div>
+      <div class="case-title">Brand Identity & Visual System</div>
+      <div class="case-subtitle">that set the market standard</div>
+      <div class="case-stats">
+        <div class="stat">
+          <div class="stat-value">10+</div>
+          <div class="stat-label">Competitors copied</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">0</div>
+          <div class="stat-label">External production</div>
+        </div>
+      </div>
+    </div>
+    <div class="case-body">
+      <div class="case-block">
+        <div class="case-block-label">Business problem</div>
+        <p>4 years ago the brand existed but looked like every competitor — no distinct visual language, no recognition, no system for the team to work from.</p>
+      </div>
+      <div class="case-block">
+        <div class="case-block-label">My role</div>
+        <p>Developed a new visual and communication identity — a distinctive aesthetic that made the brand instantly recognizable. Extended the same visual logic into AI-generated content, then systematized everything into Figma libraries, a visual guidebook, prompt libraries, and templates. Presented the system to senior stakeholders, aligning creative direction with business objectives. Grew two team members from mid-level to lead through the process.</p>
+      </div>
+      <div class="result-block case-block">
+        <div class="case-block-label">Result</div>
+        <p>The visual language became the market benchmark. 10+ competitors copied it. A team of 4 now operates the system fully independently.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Case 03 -->
+  <div class="case">
+    <div class="case-meta">
+      <div class="case-number">03</div>
+      <div class="case-title">AI Creative Brand Content</div>
+      <div class="case-subtitle">Seasonal launches</div>
+      <div class="case-stats">
+        <div class="stat">
+          <div class="stat-value">3×</div>
+          <div class="stat-label">Budget reduction</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">10+</div>
+          <div class="stat-label">Touchpoints</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">0</div>
+          <div class="stat-label">External production</div>
+        </div>
+      </div>
+    </div>
+    <div class="case-body">
+      <div class="case-block">
+        <div class="case-block-label">Business problem</div>
+        <p>Seasonal product launches require dozens of assets — website, social, app, and OOH. At that scale, traditional production meant high cost, long timelines, and inconsistent output across formats.</p>
+      </div>
+      <div class="case-block">
+        <div class="case-block-label">My role</div>
+        <p>Led the full seasonal campaign end-to-end — from creative concept to final delivery across 10+ touchpoints. Built an AI generation workflow integrating real product photography into AI-generated scenes. Created a scalable visual system adaptable to every format. Championed a test-and-learn approach that balanced speed with craft quality.</p>
+      </div>
+      <div class="result-block case-block">
+        <div class="case-block-label">Result</div>
+        <p>Production budget reduced 3×. Consistent visual quality across all touchpoints. A distinct brand aesthetic that differentiated from competitors — delivered entirely without external production.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="contact-left">
+    <div class="contact-label">Get in touch</div>
+    <div class="contact-heading">Let's work<br>together</div>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:epesyakova@gmail.com">
+        <span class="contact-link-label">Email</span>
+        epesyakova@gmail.com
+      </a>
+      <a class="contact-link" href="tel:+4915205309082">
+        <span class="contact-link-label">Phone</span>
+        +49 152 0530 9082
+      </a>
+      <a class="contact-link" href="https://linkedin.com/in/jane-pesyakova" target="_blank">
+        <span class="contact-link-label">LinkedIn</span>
+        Jane Pesyakova
+      </a>
+      <div class="contact-link">
+        <span class="contact-link-label">Location</span>
+        München / Remote
+      </div>
+    </div>
+  </div>
+  <div class="permit-badge">EU Work Permit</div>
+</div>
+
+<footer>
+  <span>Jane Pesyakova — AI Lead Creative</span>
+  <span>München / Remote · 2025</span>
+</footer>
+
+</body>
+</html>
