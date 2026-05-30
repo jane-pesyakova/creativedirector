@@ -6,268 +6,84 @@
 <title>Jane Pesyakova — AI Lead Creative</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   :root {
     --black: #111110;
     --white: #FAFAF8;
     --gray-light: #F1EFE8;
     --gray-mid: #B4B2A9;
     --gray-dark: #444441;
-    --accent: #111110;
     --border: rgba(0,0,0,0.1);
   }
-
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--white);
-    color: var(--black);
-    font-size: 15px;
-    line-height: 1.6;
-  }
-
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--white); color: var(--black); font-size: 15px; line-height: 1.6; }
   a { color: inherit; text-decoration: none; }
 
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 48px;
-    background: var(--white);
-    border-bottom: 0.5px solid var(--border);
-  }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; background: var(--white); border-bottom: 0.5px solid var(--border); }
   .nav-name { font-size: 14px; font-weight: 500; letter-spacing: 0.02em; }
   .nav-links { display: flex; gap: 32px; }
   .nav-links a { font-size: 13px; color: var(--gray-dark); transition: color 0.2s; }
   .nav-links a:hover { color: var(--black); }
 
-  /* SECTIONS */
-  section { padding: 120px 48px; max-width: 1100px; margin: 0 auto; }
-  section:first-of-type { padding-top: 160px; }
-
-  /* HERO */
-  .hero { padding-top: 180px; padding-bottom: 120px; }
-  .hero-label {
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gray-mid);
-    margin-bottom: 24px;
-  }
-  .hero h1 {
-    font-size: clamp(48px, 7vw, 88px);
-    font-weight: 500;
-    line-height: 1.0;
-    letter-spacing: -0.03em;
-    margin-bottom: 40px;
-  }
-  .hero-bio {
-    max-width: 640px;
-    font-size: 17px;
-    line-height: 1.7;
-    color: var(--gray-dark);
-    margin-bottom: 48px;
-  }
-  .hero-meta {
-    display: flex;
-    gap: 40px;
-    font-size: 13px;
-    color: var(--gray-mid);
-    flex-wrap: wrap;
-  }
-  .hero-meta span { display: flex; align-items: center; gap: 8px; }
+  .hero { padding: 180px 48px 100px; max-width: 1100px; margin: 0 auto; }
+  .hero-label { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 24px; }
+  .hero h1 { font-size: clamp(48px, 7vw, 88px); font-weight: 500; line-height: 1.0; letter-spacing: -0.03em; margin-bottom: 40px; }
+  .hero-bio { max-width: 640px; font-size: 17px; line-height: 1.7; color: var(--gray-dark); margin-bottom: 48px; }
+  .hero-meta { display: flex; gap: 40px; font-size: 13px; color: var(--gray-mid); flex-wrap: wrap; }
   .hero-meta strong { color: var(--black); }
 
-  /* DIVIDER */
-  .divider {
-    width: 100%;
-    height: 0.5px;
-    background: var(--border);
-    max-width: 1100px;
-    margin: 0 auto;
-  }
+  .divider { width: 100%; height: 0.5px; background: var(--border); }
+
+  .section { padding: 80px 48px; max-width: 1100px; margin: 0 auto; }
+  .section-label { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 32px; }
+
+  /* GALLERY */
+  .gallery-intro { max-width: 600px; font-size: 16px; color: var(--gray-dark); line-height: 1.7; margin-bottom: 40px; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .gallery-grid img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; transition: opacity 0.2s; }
+  .gallery-grid img:hover { opacity: 0.85; }
+  .gallery-grid .tall { aspect-ratio: 9/16; grid-row: span 2; }
+  .gallery-grid .wide { grid-column: span 2; }
 
   /* TOOLS */
-  .tools-section { padding: 80px 48px; }
-  .section-label {
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gray-mid);
-    margin-bottom: 32px;
-  }
-  .tools-intro {
-    max-width: 600px;
-    font-size: 16px;
-    color: var(--gray-dark);
-    line-height: 1.7;
-    margin-bottom: 40px;
-  }
-  .tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border: 0.5px solid var(--border);
-  }
-  .tool-item {
-    background: var(--white);
-    padding: 24px 28px;
-  }
-  .tool-name {
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: 6px;
-  }
-  .tool-use {
-    font-size: 12px;
-    color: var(--gray-mid);
-    line-height: 1.5;
-  }
+  .tools-intro { max-width: 600px; font-size: 16px; color: var(--gray-dark); line-height: 1.7; margin-bottom: 40px; }
+  .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--border); border: 0.5px solid var(--border); }
+  .tool-item { background: var(--white); padding: 24px 28px; }
+  .tool-name { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+  .tool-use { font-size: 12px; color: var(--gray-mid); line-height: 1.5; }
 
   /* CASES */
-  .cases-section { padding: 80px 48px; }
-  .case {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 60px;
-    padding: 60px 0;
-    border-top: 0.5px solid var(--border);
-  }
+  .case { display: grid; grid-template-columns: 1fr 2fr; gap: 60px; padding: 60px 0; border-top: 0.5px solid var(--border); }
   .case:last-child { border-bottom: 0.5px solid var(--border); }
-  .case-meta {}
-  .case-number {
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gray-mid);
-    margin-bottom: 16px;
-  }
-  .case-title {
-    font-size: 22px;
-    font-weight: 500;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    margin-bottom: 8px;
-  }
-  .case-subtitle {
-    font-size: 14px;
-    color: var(--gray-mid);
-    margin-bottom: 32px;
-  }
-  .case-stats {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .stat {}
-  .stat-value {
-    font-size: 28px;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    line-height: 1;
-  }
-  .stat-label {
-    font-size: 12px;
-    color: var(--gray-mid);
-    margin-top: 4px;
-  }
+  .case-number { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 16px; }
+  .case-title { font-size: 22px; font-weight: 500; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .case-subtitle { font-size: 14px; color: var(--gray-mid); margin-bottom: 32px; }
+  .case-stats { display: flex; flex-direction: column; gap: 16px; }
+  .stat-value { font-size: 28px; font-weight: 500; letter-spacing: -0.02em; line-height: 1; }
+  .stat-label { font-size: 12px; color: var(--gray-mid); margin-top: 4px; }
   .case-body { display: flex; flex-direction: column; gap: 24px; }
-  .case-block {}
-  .case-block-label {
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--black);
-    margin-bottom: 8px;
-  }
-  .case-block p {
-    font-size: 15px;
-    color: var(--gray-dark);
-    line-height: 1.7;
-  }
-  .result-block {
-    background: var(--gray-light);
-    padding: 20px 24px;
-  }
-  .result-block .case-block-label { color: var(--black); }
+  .case-block-label { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--black); margin-bottom: 8px; }
+  .case-block p { font-size: 15px; color: var(--gray-dark); line-height: 1.7; }
+  .result-block { background: var(--gray-light); padding: 20px 24px; }
   .result-block p { color: var(--black); }
 
   /* CONTACT */
-  .contact-section {
-    padding: 100px 48px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 40px;
-    flex-wrap: wrap;
-    max-width: 1100px;
-    margin: 0 auto;
-    border-top: 0.5px solid var(--border);
-  }
-  .contact-left {}
-  .contact-label {
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gray-mid);
-    margin-bottom: 16px;
-  }
-  .contact-heading {
-    font-size: clamp(32px, 5vw, 56px);
-    font-weight: 500;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-    margin-bottom: 40px;
-  }
-  .contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 15px;
-    color: var(--gray-dark);
-    transition: color 0.2s;
-  }
+  .contact-section { padding: 100px 48px; display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; border-top: 0.5px solid var(--border); }
+  .contact-label { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 16px; }
+  .contact-heading { font-size: clamp(32px, 5vw, 56px); font-weight: 500; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 40px; }
+  .contact-links { display: flex; flex-direction: column; gap: 12px; }
+  .contact-link { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--gray-dark); transition: color 0.2s; }
   .contact-link:hover { color: var(--black); }
-  .contact-link-label {
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gray-mid);
-    min-width: 72px;
-  }
-  .permit-badge {
-    font-size: 12px;
-    border: 0.5px solid var(--border);
-    padding: 8px 16px;
-    color: var(--gray-dark);
-    align-self: flex-start;
-  }
+  .contact-link-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-mid); min-width: 72px; }
+  .permit-badge { font-size: 12px; border: 0.5px solid var(--border); padding: 8px 16px; color: var(--gray-dark); align-self: flex-start; }
 
-  /* FOOTER */
-  footer {
-    padding: 24px 48px;
-    font-size: 12px;
-    color: var(--gray-mid);
-    border-top: 0.5px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-  }
+  footer { padding: 24px 48px; font-size: 12px; color: var(--gray-mid); border-top: 0.5px solid var(--border); display: flex; justify-content: space-between; }
 
   @media (max-width: 768px) {
     nav { padding: 16px 24px; }
     .nav-links { display: none; }
-    section, .tools-section, .cases-section { padding: 80px 24px; }
+    .hero, .section { padding: 80px 24px; }
     .hero { padding-top: 120px; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid .tall { aspect-ratio: 1/1; grid-row: span 1; }
     .case { grid-template-columns: 1fr; gap: 32px; }
     .contact-section { padding: 80px 24px; flex-direction: column; align-items: flex-start; }
     footer { padding: 24px; flex-direction: column; gap: 8px; }
@@ -285,8 +101,7 @@
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="about">
+<div class="hero" id="about">
   <div class="hero-label">AI Lead Creative</div>
   <h1>Jane<br>Pesyakova</h1>
   <p class="hero-bio">Most teams are still experimenting with AI. I build the systems, people, and culture that make it an operational standard.<br><br>10+ years of creative leadership across brand identity, integrated campaigns, and product launches — app, paid, digital, social, and OOH. I've led teams of 10–15, grown mid-level creatives into leads, and built AI-native departments from the ground up.<br><br>I develop creative vision rooted in brand values and business objectives — then architect the end-to-end systems that deliver it at scale. But the infrastructure only works when the people do. So I build that too: mentorship models, knowledge-sharing practices, and team cultures where experimentation is safe and craft still matters.</p>
@@ -295,12 +110,35 @@
     <span><strong>2022 — Present</strong></span>
     <span><strong>Remote / München</strong></span>
   </div>
-</section>
+</div>
+
+<div class="divider"></div>
+
+<!-- GALLERY -->
+<div class="section" id="gallery">
+  <div class="section-label">Selected Work</div>
+  <p class="gallery-intro">AI-generated visuals for Drinkit — brand campaigns, seasonal launches, app UI, and product content. All created without external production.</p>
+  <div class="gallery-grid">
+    <img src="Group 55556938.png" alt="Drinkit app UI" class="tall">
+    <img src="2_happy 1 1.png" alt="Silver can visual">
+    <img src="TV_Vesna_Matcha_Ezevika_Rassvet 1.png" alt="Matcha Rassvet">
+    <img src="Card 1.png" alt="Design card">
+    <img src="Card-3 1.png" alt="Design card">
+    <img src="Group 55556936.png" alt="Drinkit app UI" class="tall">
+    <img src="TV_Vesna_Matcha_Ezevika_Rassvet-1 1.png" alt="Matcha visual">
+    <img src="TV_Vesna_Matcha_Ezevichniy_Rassvet_Ice 1.png" alt="Matcha ice">
+    <img src="Card-2 1.png" alt="Design card">
+    <img src="Card-1 1.png" alt="Design card">
+    <img src="Group 55556937.png" alt="Drinkit app UI" class="tall">
+    <img src="TV_Vesna_Latte_Ezevika_Taro 1.png" alt="Latte Taro">
+    <img src="Group 55556940.png" alt="Campaign visual" class="wide">
+  </div>
+</div>
 
 <div class="divider"></div>
 
 <!-- TOOLS -->
-<section class="tools-section" id="tools">
+<div class="section" id="tools">
   <div class="section-label">Tools & Practice</div>
   <p class="tools-intro">As a creative lead, I work primarily with AI tools — for concept generation, brainstorming, and presentation development. My hands-on practice is built around AI as a creative partner.</p>
   <div class="tools-grid">
@@ -329,33 +167,23 @@
       <div class="tool-use">Video concept development in collaboration with video team</div>
     </div>
   </div>
-</section>
+</div>
 
 <div class="divider"></div>
 
 <!-- CASES -->
-<section class="cases-section" id="work">
+<div class="section" id="work">
   <div class="section-label">Experience & Case Studies</div>
 
-  <!-- Case 01 -->
   <div class="case">
     <div class="case-meta">
       <div class="case-number">01</div>
       <div class="case-title">AI Content Factory</div>
       <div class="case-subtitle">for high-volume product testing</div>
       <div class="case-stats">
-        <div class="stat">
-          <div class="stat-value">7→2</div>
-          <div class="stat-label">Days time-to-market</div>
-        </div>
-        <div class="stat">
-          <div class="stat-value">100+</div>
-          <div class="stat-label">Monthly capacity</div>
-        </div>
-        <div class="stat">
-          <div class="stat-value">3</div>
-          <div class="stat-label">Team members</div>
-        </div>
+        <div class="stat"><div class="stat-value">7→2</div><div class="stat-label">Days time-to-market</div></div>
+        <div class="stat"><div class="stat-value">100+</div><div class="stat-label">Monthly capacity</div></div>
+        <div class="stat"><div class="stat-value">3</div><div class="stat-label">Team members</div></div>
       </div>
     </div>
     <div class="case-body">
@@ -374,21 +202,14 @@
     </div>
   </div>
 
-  <!-- Case 02 -->
   <div class="case">
     <div class="case-meta">
       <div class="case-number">02</div>
       <div class="case-title">Brand Identity & Visual System</div>
       <div class="case-subtitle">that set the market standard</div>
       <div class="case-stats">
-        <div class="stat">
-          <div class="stat-value">10+</div>
-          <div class="stat-label">Competitors copied</div>
-        </div>
-        <div class="stat">
-          <div class="stat-value">0</div>
-          <div class="stat-label">External production</div>
-        </div>
+        <div class="stat"><div class="stat-value">10+</div><div class="stat-label">Competitors copied</div></div>
+        <div class="stat"><div class="stat-value">0</div><div class="stat-label">External production</div></div>
       </div>
     </div>
     <div class="case-body">
@@ -407,25 +228,15 @@
     </div>
   </div>
 
-  <!-- Case 03 -->
   <div class="case">
     <div class="case-meta">
       <div class="case-number">03</div>
       <div class="case-title">AI Creative Brand Content</div>
       <div class="case-subtitle">Seasonal launches</div>
       <div class="case-stats">
-        <div class="stat">
-          <div class="stat-value">3×</div>
-          <div class="stat-label">Budget reduction</div>
-        </div>
-        <div class="stat">
-          <div class="stat-value">10+</div>
-          <div class="stat-label">Touchpoints</div>
-        </div>
-        <div class="stat">
-          <div class="stat-value">0</div>
-          <div class="stat-label">External production</div>
-        </div>
+        <div class="stat"><div class="stat-value">3×</div><div class="stat-label">Budget reduction</div></div>
+        <div class="stat"><div class="stat-value">10+</div><div class="stat-label">Touchpoints</div></div>
+        <div class="stat"><div class="stat-value">0</div><div class="stat-label">External production</div></div>
       </div>
     </div>
     <div class="case-body">
@@ -443,29 +254,24 @@
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- CONTACT -->
 <div class="contact-section" id="contact">
   <div class="contact-left">
     <div class="contact-label">Get in touch</div>
     <div class="contact-heading">Let's work<br>together</div>
     <div class="contact-links">
       <a class="contact-link" href="mailto:epesyakova@gmail.com">
-        <span class="contact-link-label">Email</span>
-        epesyakova@gmail.com
+        <span class="contact-link-label">Email</span>epesyakova@gmail.com
       </a>
       <a class="contact-link" href="tel:+4915205309082">
-        <span class="contact-link-label">Phone</span>
-        +49 152 0530 9082
+        <span class="contact-link-label">Phone</span>+49 152 0530 9082
       </a>
       <a class="contact-link" href="https://linkedin.com/in/jane-pesyakova" target="_blank">
-        <span class="contact-link-label">LinkedIn</span>
-        Jane Pesyakova
+        <span class="contact-link-label">LinkedIn</span>Jane Pesyakova
       </a>
       <div class="contact-link">
-        <span class="contact-link-label">Location</span>
-        München / Remote
+        <span class="contact-link-label">Location</span>München / Remote
       </div>
     </div>
   </div>
